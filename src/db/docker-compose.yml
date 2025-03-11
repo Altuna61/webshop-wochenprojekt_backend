@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:latest
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_USER: mery
+    ports:
+      - "5432:5432"
+ 
+volumes:
+  pgdata:
+
+# services:
+#  postgres:
+#    image: postgres:latest
+# services: (Dienst-Definition)
+# Erstellt einen Service namens postgres, basierend auf dem neuesten PostgreSQL-Image
+# Wenn das Image nicht vorhanden ist, wird es automatisch aus Docker Hub heruntergeladen
+
+#     volumes:
+#      - pgdata:/var/lib/postgresql/data
+# volumes: (Persistente Daten)
+# Erstellt einen persistenten Speicher (pgdata) für die PostgreSQL-Datenbank
+
+

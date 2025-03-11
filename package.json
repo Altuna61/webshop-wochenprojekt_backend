@@ -1,0 +1,25 @@
+{
+  "name": "webshop-wochenprojekt_backend",
+  "scripts": {
+  "drizzle:generate": "drizzle-kit generate"
+},
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "^1.2.4",
+    "@types/pg": "^8.11.11",
+    "drizzle-kit": "^0.30.5",
+    "tsx": "^4.19.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "drizzle-orm": "^0.40.0",
+    "hono": "^4.7.4",
+    "pg": "^8.13.3",
+    "schema": "^0.2.1"
+  }
+  
+}

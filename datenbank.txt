@@ -1,0 +1,61 @@
+Table users {
+  id serial [primary key, increment]
+  addressid integer
+  firstname text
+  lastname text
+  email text [unique]
+  password text
+}
+ 
+Table addresses {
+  id serial [primary key, increment]
+  street text
+  housenumber text
+  city text
+  zipcode text
+}
+ 
+Enum category {
+  "Clothing"
+  "Electronics"
+  "Home"
+  "Beauty & Health"
+  "Gifts"
+}
+ 
+Table products {
+  id serial [primary key, increment]
+  name text
+  price numeric
+  category category
+  imageurl text
+  description text
+}
+ 
+Enum order_status {
+  "Pending"
+  "Shipped"
+  "Delivered"
+  "Cancelled"
+}
+ 
+Table orders {
+  id serial [primary key, increment]
+  userid numeric [not null]
+  ordertime timestamp
+  status order_status
+  created_at timestamp [default: `now()`]
+}
+ 
+Table order_positions {
+  id serial [primary key, increment]
+  orderid numeric  [not null]
+  productid numeric [not null]
+  quantity numeric
+  price_at_order numeric
+}
+ 
+Ref: users.addressid < addresses.id // User kann mehrere Adressen haben, adresse gehört aber immer nur einem
+Ref: orders.userid > users.id // User kann mehrere Orders haben, eine Order gehört nur einem User
+Ref: order_positions.orderid > orders.id // Eine Orderposition gehört nur zu einer Order, aber jede Order kann mehrere Positions haben
+Ref: order_positions.productid > products.id // Jede Orderpositon kann nur ein Produkt haben, aber ein Produkt kann in mehreren Positions vorkommen
