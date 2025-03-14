@@ -32,7 +32,7 @@ Table products {
   description text
 }
  
-Enum order_status {
+Enum order_position {
   "Pending"
   "Shipped"
   "Delivered"
@@ -47,7 +47,7 @@ Table orders {
   created_at timestamp [default: `now()`]
 }
  
-Table order_positions {
+Table order_status {
   id serial [primary key, increment]
   orderid numeric  [not null]
   productid numeric [not null]
@@ -55,7 +55,10 @@ Table order_positions {
   price_at_order numeric
 }
  
-Ref: users.addressid < addresses.id // User kann mehrere Adressen haben, adresse gehört aber immer nur einem
+Ref: users.addressid < addresses.id // User kann mehrere Adressen haben, adresse gehört aber immer nur einem User
+
 Ref: orders.userid > users.id // User kann mehrere Orders haben, eine Order gehört nur einem User
+
 Ref: order_positions.orderid > orders.id // Eine Orderposition gehört nur zu einer Order, aber jede Order kann mehrere Positions haben
+
 Ref: order_positions.productid > products.id // Jede Orderpositon kann nur ein Produkt haben, aber ein Produkt kann in mehreren Positions vorkommen

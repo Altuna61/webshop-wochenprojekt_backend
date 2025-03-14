@@ -42,3 +42,12 @@ src/db/schema.ts
 src/routes/products.ts
 
 # Server starten: bun run src/index.ts
+
+---
+
+1. docker- compose gemacht
+2. schema.ts
+3. client
+4. seed.ts
+5. repositories anfangen
+6. api- schemas
